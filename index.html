@@ -6,1266 +6,7 @@
     <title>Portfolio - Ibrahim Al Sharkawi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --dark-bg: #0A0A14;
-            --dark-card: #151521;
-            --dark-header: #11111D;
-            --accent-purple: #7B4AE0;
-            --accent-pink: #C53AA9;
-            --accent-blue: #4A6EE0;
-            --text-primary: #E0E0F0;
-            --text-secondary: #A0A0C0;
-            --glass-bg: rgba(30, 30, 46, 0.4);
-            --glass-border: rgba(100, 100, 150, 0.2);
-            --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: linear-gradient(135deg, #0A0A14 0%, #1A1A2E 50%, #16213E 100%);
-            color: var(--text-primary);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-            text-align: left;
-        }
-
-        .bg-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .shape {
-            position: absolute;
-            opacity: 0.1;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-            animation: float 15s infinite linear;
-        }
-
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            right: 10%;
-            animation-duration: 20s;
-        }
-
-        .shape-2 {
-            width: 200px;
-            height: 200px;
-            top: 60%;
-            left: 5%;
-            animation-duration: 25s;
-            animation-delay: 2s;
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-        }
-
-        .shape-3 {
-            width: 150px;
-            height: 150px;
-            bottom: 20%;
-            right: 20%;
-            animation-duration: 18s;
-            animation-delay: 5s;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-pink));
-        }
-
-        .shape-4 {
-            width: 250px;
-            height: 250px;
-            top: 30%;
-            left: 20%;
-            animation-duration: 22s;
-            animation-delay: 7s;
-        }
-
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        @keyframes slideInFromRight {
-            0% {
-                transform: translateX(100px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInFromLeft {
-            0% {
-                transform: translateX(-100px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            33% {
-                transform: translateY(-30px) rotate(120deg);
-            }
-            66% {
-                transform: translateY(20px) rotate(240deg);
-            }
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes dotsAnimation {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0.7;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 1;
-            }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        section {
-            padding: 100px 0;
-            opacity: 0;
-            transform: translateX(-100px);
-            transition: all 0.8s ease;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Navigation Menu Styles */
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .nav-list {
-            display: flex;
-            list-style: none;
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            padding: 10px 25px;
-            box-shadow: var(--shadow);
-            gap: 15px;
-        }
-
-        .nav-item {
-            position: relative;
-        }
-
-        .nav-link {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 20px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            font-size: 1rem;
-        }
-
-        .nav-link i {
-            font-size: 1.1rem;
-        }
-
-        .nav-link:hover {
-            color: var(--text-primary);
-            background: rgba(123, 74, 224, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .nav-link.active {
-            color: var(--text-primary);
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-            box-shadow: 0 5px 15px rgba(123, 74, 224, 0.3);
-        }
-
-        .profile-section {
-            margin-top: 20px;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--dark-header), var(--dark-card));
-            border-radius: 25px;
-            overflow: hidden;
-            border: 1px solid rgba(100, 100, 150, 0.1);
-        }
-
-        .profile-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(123, 74, 224, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at bottom left, rgba(197, 58, 169, 0.15) 0%, transparent 50%);
-        }
-
-        .profile-cover {
-            height: 250px;
-            width: 100%;
-            margin: 0 auto;
-            background: linear-gradient(135deg, var(--dark-card), #1E1E2E);
-            border-radius: 20px 20px 0 0;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .profile-cover::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink), var(--accent-blue));
-            opacity: 0.1;
-            background-size: 400% 400%;
-            animation: gradientShift 10s ease infinite;
-        }
-
-        .profile-content {
-            background: var(--dark-card);
-            border-radius: 0 0 20px 20px;
-            padding: 180px 40px 50px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
-            position: relative;
-            width: 100%;
-            margin: 0 auto;
-            border: 1px solid rgba(100, 100, 150, 0.1);
-        }
-
-        .profile-image-container {
-            position: absolute;
-            top: -120px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            overflow: hidden;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--dark-card);
-            border: 8px solid var(--dark-card);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .profile-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            z-index: 5;
-            position: relative;
-            animation: pulse 4s infinite;
-            filter: brightness(1.1) contrast(1.1);
-        }
-
-        .dots-effect {
-            position: absolute;
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            z-index: 4;
-        }
-
-        .dot {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--accent-purple);
-            border-radius: 50%;
-            animation: dotsAnimation 2s infinite ease-in-out;
-        }
-
-        .dot:nth-child(1) { top: 10px; left: 50%; transform: translateX(-50%); animation-delay: 0s; }
-        .dot:nth-child(2) { top: 30px; right: 30px; animation-delay: 0.2s; }
-        .dot:nth-child(3) { top: 70px; right: 10px; animation-delay: 0.4s; }
-        .dot:nth-child(4) { top: 120px; right: 0; animation-delay: 0.6s; }
-        .dot:nth-child(5) { bottom: 120px; right: 0; animation-delay: 0.8s; }
-        .dot:nth-child(6) { bottom: 70px; right: 10px; animation-delay: 1s; }
-        .dot:nth-child(7) { bottom: 30px; right: 30px; animation-delay: 1.2s; }
-        .dot:nth-child(8) { bottom: 10px; left: 50%; transform: translateX(-50%); animation-delay: 1.4s; }
-        .dot:nth-child(9) { bottom: 30px; left: 30px; animation-delay: 1.6s; }
-        .dot:nth-child(10) { bottom: 70px; left: 10px; animation-delay: 1.8s; }
-        .dot:nth-child(11) { top: 120px; left: 0; animation-delay: 2s; }
-        .dot:nth-child(12) { top: 70px; left: 10px; animation-delay: 2.2s; }
-        .dot:nth-child(13) { top: 30px; left: 30px; animation-delay: 2.4s; }
-
-        .profile-info {
-            max-width: 100%;
-        }
-
-        .profile-name {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            text-align: center;
-        }
-
-        .profile-title {
-            font-size: 1.5rem;
-            color: var(--accent-purple);
-            margin-bottom: 25px;
-            font-weight: 500;
-        }
-
-        .profile-bio {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 40px;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 400;
-        }
-
-        .profile-location {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .location-icon {
-            font-size: 1.5rem;
-            color: var(--accent-purple);
-        }
-
-        .location-text {
-            font-size: 1.3rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .about {
-            background: linear-gradient(135deg, var(--dark-header), var(--dark-card));
-            border-radius: 25px;
-            padding: 70px 60px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(100, 100, 150, 0.1);
-        }
-
-        .about::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(123, 74, 224, 0.1) 0%, rgba(21, 21, 33, 0) 70%);
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            margin-bottom: 60px;
-            position: relative;
-            display: inline-block;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-purple), var(--accent-pink));
-            border-radius: 2px;
-        }
-
-        .about-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .about-text {
-            padding: 40px;
-            background: rgba(30, 30, 46, 0.5);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-
-        .about-text p {
-            font-size: 1.2rem;
-            line-height: 1.9;
-            margin-bottom: 25px;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 35px;
-        }
-
-        .project-card {
-            background: var(--dark-card);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-            transition: all 0.5s ease;
-            position: relative;
-            border: 1px solid var(--glass-border);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            opacity: 0;
-            transform: translateX(-100px);
-            transition: all 0.8s ease;
-            cursor: pointer;
-        }
-
-        .project-card.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(123, 74, 224, 0.15), rgba(197, 58, 169, 0.15));
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-20px) rotateX(5deg) rotateY(-5deg);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
-        .project-image {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-            filter: brightness(0.9) contrast(1.1);
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.08);
-        }
-
-        .project-content {
-            padding: 30px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .project-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 600;
-        }
-
-        .project-description {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-
-        .skill-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 30px 25px;
-            width: 250px;
-            transition: all 0.5s ease;
-            background: var(--dark-card);
-            border-radius: 20px;
-            border: 1px solid var(--glass-border);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            transform: translateX(-100px);
-            transition: all 0.8s ease;
-        }
-
-        .skill-item.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .skill-item:hover {
-            transform: translateY(-15px) scale(1.08) rotateY(-15deg);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            background: linear-gradient(135deg, var(--dark-card), #1E1E2E);
-        }
-
-        .skill-icon {
-            font-size: 3.2rem;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 64px;
-        }
-
-        .skill-name {
-            font-size: 1.1rem;
-            text-align: center;
-            font-weight: 500;
-            color: var(--text-secondary);
-            white-space: nowrap;
-            margin-bottom: 15px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .skill-tools {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 10px;
-            width: 100%;
-        }
-
-        .skill-tools i,
-        .tool-icon {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: var(--text-secondary);
-            transition: all 0.3s ease;
-            border-radius: 6px;
-        }
-
-        .tool-icon {
-            object-fit: contain;
-            filter: brightness(0.8);
-            padding: 4px;
-        }
-
-        .skill-tools i:hover,
-        .tool-icon:hover {
-            color: var(--accent-purple);
-            transform: scale(1.2);
-            filter: brightness(1);
-        }
-
-        .skill-item:first-child .skill-tools .tool-icon[alt="Photoshop"],
-        .skill-item:first-child .skill-tools .tool-icon[alt="Illustrator"],
-        .skill-item:first-child .skill-tools .tool-icon[alt="InDesign"] {
-            width: 48px;
-            height: 48px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-item:first-child .skill-tools .tool-icon[alt="Photoshop"]:hover,
-        .skill-item:first-child .skill-tools .tool-icon[alt="Illustrator"]:hover,
-        .skill-item:first-child .skill-tools .tool-icon[alt="InDesign"]:hover {
-            transform: scale(1.3);
-            filter: brightness(1.3) drop-shadow(0 0 8px rgba(123, 74, 224, 0.6));
-        }
-
-        .skill-item:first-child .skill-icon {
-            font-size: 3.2rem;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .skill-item:first-child:hover .skill-icon {
-            transform: scale(1.2) rotate(10deg);
-            filter: brightness(1.2);
-        }
-
-        .fa-js-square {
-            color: var(--text-secondary);
-        }
-
-        .fa-node-js {
-            color: var(--text-secondary);
-        }
-
-        .fa-git-alt {
-            color: var(--text-secondary);
-        }
-
-        .fa-github {
-            color: var(--text-secondary);
-        }
-
-        .fa-mdb {
-            color: var(--text-secondary);
-        }
-
-        .contact {
-            text-align: center;
-            background: linear-gradient(135deg, var(--dark-header), var(--dark-card));
-            color: var(--text-primary);
-            border-radius: 25px;
-            padding: 80px 50px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(100, 100, 150, 0.1);
-        }
-
-        .contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(123, 74, 224, 0.15) 0%, transparent 50%),
-                        radial-gradient(circle at bottom left, rgba(197, 58, 169, 0.15) 0%, transparent 50%);
-        }
-
-        .contact .section-title {
-            color: var(--text-primary);
-        }
-
-        .contact p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            max-width: 650px;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--text-secondary);
-            position: relative;
-            z-index: 2;
-            font-weight: 400;
-            line-height: 1.7;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            transition: all 0.5s ease;
-            background: var(--dark-card);
-            border: 1px solid var(--glass-border);
-            transform-style: preserve-3d;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            transform: translateX(-100px);
-            transition: all 0.8s ease;
-        }
-
-        .social-link.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .social-link:hover {
-            transform: translateY(-12px) scale(1.15) rotateY(-20deg);
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-            box-shadow: 0 15px 30px rgba(123, 74, 224, 0.4);
-        }
-
-        .social-icon {
-            font-size: 1.7rem;
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover .social-icon {
-            color: white;
-            transform: scale(1.2);
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px 0;
-            margin-top: 70px;
-            border-top: 1px solid var(--glass-border);
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        .project-gallery {
-            display: none;
-        }
-
-        .project-gallery img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .project-gallery img:hover {
-            transform: scale(1.03);
-        }
-
-        .photoshop-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-            padding: 10px;
-            background: rgba(30, 30, 46, 0.5);
-            border-radius: 8px;
-            border: 1px solid var(--glass-border);
-        }
-
-        .photoshop-info img {
-            width: 40px;
-            height: 40px;
-        }
-
-        .photoshop-info span {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .profile-cover {
-            background-image: url('main.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .project-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(10, 10, 20, 0.95);
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: var(--dark-card);
-            max-width: 1000px;
-            margin: 40px auto;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            position: relative;
-            animation: modalFadeIn 0.5s ease;
-        }
-
-        @keyframes modalFadeIn {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .modal-header {
-            padding: 30px;
-            background: linear-gradient(135deg, var(--dark-header), var(--dark-card));
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .modal-title {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .modal-description {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .modal-gallery {
-            padding: 30px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .modal-gallery img {
-            width: 100%;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-gallery img:hover {
-            transform: scale(1.02);
-        }
-
-        .modal-footer {
-            padding: 30px;
-            background: var(--dark-header);
-            border-top: 1px solid var(--glass-border);
-            text-align: center;
-        }
-
-        .thank-you {
-            font-family: 'Fredoka', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink), var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-            text-shadow: 0 5px 15px rgba(123, 74, 224, 0.3);
-            margin-top: 30px;
-        }
-
-        .modal-footer p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            margin-top: 10px;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(30, 30, 46, 0.7);
-            border: 1px solid var(--glass-border);
-            color: var(--text-primary);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            z-index: 10;
-        }
-
-        .close-modal:hover {
-            background: var(--accent-purple);
-            transform: rotate(90deg);
-        }
-
-        .modal-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            overflow: hidden;
-            pointer-events: none;
-        }
-
-        .modal-shape {
-            position: absolute;
-            opacity: 0.05;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-            animation: float 15s infinite linear;
-        }
-
-        .modal-shape-1 {
-            width: 150px;
-            height: 150px;
-            top: 10%;
-            right: 10%;
-            animation-duration: 20s;
-        }
-
-        .modal-shape-2 {
-            width: 100px;
-            height: 100px;
-            top: 60%;
-            left: 5%;
-            animation-duration: 25s;
-            animation-delay: 2s;
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-        }
-
-        .modal-shape-3 {
-            width: 80px;
-            height: 80px;
-            bottom: 20%;
-            right: 20%;
-            animation-duration: 18s;
-            animation-delay: 5s;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-pink));
-        }
-
-        @media (max-width: 768px) {
-            .modal-gallery {
-                grid-template-columns: 1fr;
-            }
-            
-            .thank-you {
-                font-size: 2.5rem;
-            }
-            
-            .modal-title {
-                font-size: 1.8rem;
-            }
-        }
-
-        /* تحسينات الأداء */
-        .project-card,
-        .skill-item,
-        .social-link {
-            will-change: transform, opacity;
-        }
-        
-        /* تحسينات الاستجابة */
-        @media (max-width: 1200px) {
-            .profile-cover {
-                max-width: 90%;
-            }
-            
-            .profile-content {
-                max-width: 90%;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .profile-name {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2.4rem;
-            }
-            
-            .profile-location {
-                gap: 8px;
-            }
-            
-            .location-text {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-list {
-                flex-wrap: wrap;
-                justify-content: center;
-                border-radius: 20px;
-                padding: 10px 15px;
-            }
-            
-            .nav-link {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
-            
-            .profile-content {
-                padding: 150px 20px 30px;
-            }
-
-            .profile-image-container {
-                top: -100px;
-                width: 200px;
-                height: 200px;
-                border: 6px solid var(--dark-card);
-            }
-
-            .profile-image {
-                width: 100%;
-                height: 100%;
-            }
-
-            .dots-effect {
-                width: 200px;
-                height: 200px;
-            }
-
-            .profile-info {
-                max-width: 100%;
-            }
-
-            .profile-name {
-                font-size: 2.3rem;
-            }
-
-            .section-title {
-                font-size: 2.2rem;
-            }
-
-            .about, .contact {
-                padding: 50px 30px;
-            }
-            
-            .profile-cover {
-                height: 200px;
-            }
-            
-            .profile-bio {
-                font-size: 1.1rem;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .skills-container {
-                gap: 20px;
-            }
-            
-            .skill-item {
-                width: 200px;
-                padding: 20px 15px;
-            }
-            
-            .social-links {
-                gap: 15px;
-            }
-            
-            .social-link {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .social-icon {
-                font-size: 1.5rem;
-            }
-            
-            .location-text {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .nav-list {
-                gap: 8px;
-                padding: 8px 12px;
-            }
-            
-            .nav-link {
-                padding: 8px 12px;
-                font-size: 0.85rem;
-            }
-            
-            .nav-link i {
-                font-size: 0.9rem;
-            }
-            
-            .profile-cover {
-                height: 150px;
-                border-radius: 15px 15px 0 0;
-            }
-            
-            .profile-content {
-                padding: 130px 15px 25px;
-                border-radius: 0 0 15px 15px;
-            }
-            
-            .profile-image-container {
-                top: -80px;
-                width: 160px;
-                height: 160px;
-                border: 5px solid var(--dark-card);
-            }
-            
-            .profile-image {
-                width: 100%;
-                height: 100%;
-            }
-            
-            .dots-effect {
-                width: 160px;
-                height: 160px;
-            }
-            
-            .profile-name {
-                font-size: 2rem;
-            }
-            
-            .profile-title {
-                font-size: 1.2rem;
-            }
-            
-            .profile-bio {
-                font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .about, .contact {
-                padding: 40px 20px;
-            }
-            
-            .about-text {
-                padding: 25px;
-            }
-            
-            .about-text p {
-                font-size: 1.1rem;
-            }
-            
-            .contact p {
-                font-size: 1.1rem;
-            }
-            
-            .skill-item {
-                width: 170px;
-            }
-            
-            .location-text {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .nav-list {
-                flex-direction: column;
-                align-items: center;
-                border-radius: 15px;
-            }
-            
-            .nav-link {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .skills-container {
-                gap: 15px;
-            }
-            
-            .skill-item {
-                width: 150px;
-                padding: 15px 10px;
-            }
-            
-            .social-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .profile-location {
-                flex-direction: column;
-                gap: 5px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- أشكال 3D متحركة في الخلفية -->
@@ -1363,12 +104,20 @@
     <section id="projects" class="container">
         <h2 class="section-title">My Projects</h2>
         <div class="projects-grid">
-            <!-- مشروع Al Bawadi -->
+            <!-- مشروع Al Bawadi الموسع -->
             <div class="project-card" data-delay="0" onclick="openProjectModal('albawadi')">
                 <img src="albawadicover.jpg" alt="Al Bawadi" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Al Bawadi</h3>
                     <p class="project-description">A visual advertisement for the management of the well known Egyptian company Al Bawadi. The project showcases my expertise in creating social media designs.</p>
+                    
+                    <div class="project-gallery">
+                        <img src="albawadi1.jpg" alt="Al Bawadi Design 1">
+                        <img src="albawadi2.jpg" alt="Al Bawadi Design 2">
+                        <img src="albawadi3.jpg" alt="Al Bawadi Design 3">
+                        <img src="albawadi.jpeg" alt="Al Bawadi Design 4">
+                    </div>
+                    
                     <div class="photoshop-info">
                         <img src="photoshop.png" alt="Adobe Photoshop">
                         <span>Used Adobe Photoshop</span>
@@ -1376,12 +125,18 @@
                 </div>
             </div>
             
-            <!-- مشروع Spiro Spates -->
-            <div class="project-card" data-delay="0.1" onclick="openProjectModal('spiro')">
+            <!-- مشروع Spiro Spates الجديد -->
+            <div class="project-card" data-delay="0.2" onclick="openProjectModal('spiro')">
                 <img src="spirocover.jpg" alt="Spiro Spates" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Spiro Spates</h3>
                     <p class="project-description">A visual social media design for the Egyptian soft drink brand "Spiro Spates." This project showcases my expertise in creating engaging and visually appealing social media designs tailored to the brand's identity.</p>
+                    
+                    <div class="project-gallery">
+                        <img src="spiro1.jpg" alt="Spiro Spates Design 1">
+                        <img src="spiro2.jpg" alt="Spiro Spates Design 2">
+                    </div>
+                    
                     <div class="photoshop-info">
                         <img src="photoshop.png" alt="Adobe Photoshop">
                         <span>Used Adobe Photoshop</span>
@@ -1389,12 +144,24 @@
                 </div>
             </div>
             
-            <!-- مشروع Flora Beauty Clinic -->
-            <div class="project-card" data-delay="0.2" onclick="openProjectModal('flora')">
+            <!-- مشروع Flora Beauty Clinic الجديد -->
+            <div class="project-card" data-delay="0.4" onclick="openProjectModal('flora')">
                 <img src="floracover.jpg" alt="Flora Beauty Clinic" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Flora Beauty Clinic</h3>
                     <p class="project-description">A comprehensive campaign for a women's beauty clinic. This project showcases my expertise in creating elegant and feminine designs that reflect the clinic's premium services and brand identity.</p>
+                    
+                    <div class="project-gallery">
+                        <img src="flora1.jpg" alt="Flora Beauty Clinic Design 1">
+                        <img src="flora2.jpg" alt="Flora Beauty Clinic Design 2">
+                        <img src="flora3.jpg" alt="Flora Beauty Clinic Design 3">
+                        <img src="flora4.jpg" alt="Flora Beauty Clinic Design 4">
+                        <img src="flora5.jpg" alt="Flora Beauty Clinic Design 5">
+                        <img src="flora6.jpg" alt="Flora Beauty Clinic Design 6">
+                        <img src="flora7.jpg" alt="Flora Beauty Clinic Design 7">
+                        <img src="flora8.jpg" alt="Flora Beauty Clinic Design 8">
+                    </div>
+                    
                     <div class="photoshop-info">
                         <img src="photoshop.png" alt="Adobe Photoshop">
                         <span>Used Adobe Photoshop</span>
@@ -1402,12 +169,31 @@
                 </div>
             </div>
 
-            <!-- مشروع MT Marketing Agency -->
-            <div class="project-card" data-delay="0.3" onclick="openProjectModal('mt')">
+            <!-- مشروع MT Marketing Agency الجديد -->
+            <div class="project-card" data-delay="0.6" onclick="openProjectModal('mt')">
                 <img src="mt.jpg" alt="MT Marketing Agency" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">MT Marketing Agency</h3>
                     <p class="project-description">A digital marketing agency that provides various services for different fields to achieve rapid reach for your service and create a real audience. This project showcases my expertise in creating comprehensive marketing solutions.</p>
+                    
+                    <div class="project-gallery">
+                        <img src="mt1.jpg" alt="MT Marketing Agency Design 1">
+                        <img src="mt2.jpg" alt="MT Marketing Agency Design 2">
+                        <img src="mt3.jpg" alt="MT Marketing Agency Design 3">
+                        <img src="mt4.jpg" alt="MT Marketing Agency Design 4">
+                        <img src="mt5.jpg" alt="MT Marketing Agency Design 5">
+                        <img src="mt6.jpg" alt="MT Marketing Agency Design 6">
+                        <img src="mt7.jpg" alt="MT Marketing Agency Design 7">
+                        <img src="mt8.jpg" alt="MT Marketing Agency Design 8">
+                        <img src="mt9.jpg" alt="MT Marketing Agency Design 9">
+                        <img src="mt10.jpg" alt="MT Marketing Agency Design 10">
+                        <img src="mt11.jpg" alt="MT Marketing Agency Design 11">
+                        <img src="mt12.jpg" alt="MT Marketing Agency Design 12">
+                        <img src="mt13.jpg" alt="MT Marketing Agency Design 13">
+                        <img src="mt14.jpg" alt="MT Marketing Agency Design 14">
+                        <img src="mt15.jpg" alt="MT Marketing Agency Design 15">
+                    </div>
+                    
                     <div class="photoshop-info">
                         <img src="photoshop.png" alt="Adobe Photoshop">
                         <span>Used Adobe Photoshop</span>
@@ -1415,12 +201,19 @@
                 </div>
             </div>
 
-            <!-- مشروع Valentino's Perfumes -->
-            <div class="project-card" data-delay="0.4" onclick="openProjectModal('valentino')">
+            <!-- مشروع Valentino's Perfumes الجديد -->
+            <div class="project-card" data-delay="0.8" onclick="openProjectModal('valentino')">
                 <img src="perfume.jpg" alt="Valentino's Perfumes" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Valentino's Perfumes</h3>
                     <p class="project-description">A collection of social media advertising designs for Valentino brand featuring three powerful new perfumes. This project showcases my expertise in creating luxurious and appealing fragrance campaign designs.</p>
+                    
+                    <div class="project-gallery">
+                        <img src="perfume1.jpg" alt="Valentino Perfume Design 1">
+                        <img src="perfume2.jpg" alt="Valentino Perfume Design 2">
+                        <img src="perfume3.jpg" alt="Valentino Perfume Design 3">
+                    </div>
+                    
                     <div class="photoshop-info">
                         <img src="photoshop.png" alt="Adobe Photoshop">
                         <span>Used Adobe Photoshop</span>
@@ -1428,12 +221,38 @@
                 </div>
             </div>
 
-            <!-- مشروع Social Media -->
-            <div class="project-card" data-delay="0.5" onclick="openProjectModal('social')">
+            <!-- مشروع Social Media الجديد -->
+            <div class="project-card" data-delay="1.0" onclick="openProjectModal('social')">
                 <img src="socover.webp" alt="Social Media" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Social Media</h3>
                     <p class="project-description">A diverse collection of promotional social media designs. This project showcases my expertise in creating various types of social media content for different platforms and purposes.</p>
+                    
+                    <div class="project-gallery">
+                        <img src="so1.jpg" alt="Social Media Design 1">
+                        <img src="so2.jpg" alt="Social Media Design 2">
+                        <img src="so3.jpg" alt="Social Media Design 3">
+                        <img src="so4.jpg" alt="Social Media Design 4">
+                        <img src="so5.webp" alt="Social Media Design 5">
+                        <img src="so6.webp" alt="Social Media Design 6">
+                        <img src="so7.webp" alt="Social Media Design 7">
+                        <img src="so8.webp" alt="Social Media Design 8">
+                        <img src="so9.webp" alt="Social Media Design 9">
+                        <img src="so10.webp" alt="Social Media Design 10">
+                        <img src="so11.webp" alt="Social Media Design 11">
+                        <img src="so12.webp" alt="Social Media Design 12">
+                        <img src="so13.webp" alt="Social Media Design 13">
+                        <img src="so14.webp" alt="Social Media Design 14">
+                        <img src="so15.webp" alt="Social Media Design 15">
+                        <img src="so16.webp" alt="Social Media Design 16">
+                        <img src="so17.webp" alt="Social Media Design 17">
+                        <img src="so18.webp" alt="Social Media Design 18">
+                        <img src="so19.webp" alt="Social Media Design 19">
+                        <img src="so20.webp" alt="Social Media Design 20">
+                        <img src="so21.webp" alt="Social Media Design 21">
+                        <img src="so22.webp" alt="Social Media Design 22">
+                    </div>
+                    
                     <div class="photoshop-info">
                         <img src="photoshop.png" alt="Adobe Photoshop">
                         <span>Used Adobe Photoshop</span>
@@ -1441,12 +260,40 @@
                 </div>
             </div>
 
-            <!-- مشروع Elaph Gallery -->
-            <div class="project-card" data-delay="0.6" onclick="openProjectModal('elaph')">
+            <!-- مشروع Elaph Gallery الجديد -->
+            <div class="project-card" data-delay="1.2" onclick="openProjectModal('elaph')">
                 <img src="elacover.png" alt="Elaph Gallery" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Elaph Gallery</h3>
                     <p class="project-description">A comprehensive visual identity for a brand specialized in selling antiques, decorative paintings, and items used for decoration. This project showcases my expertise in creating complete brand identities.</p>
+                    
+                    <div class="project-gallery">
+                        <img src="ela1.webp" alt="Elaph Gallery Design 1">
+                        <img src="ela2.webp" alt="Elaph Gallery Design 2">
+                        <img src="ela3.webp" alt="Elaph Gallery Design 3">
+                        <img src="ela4.webp" alt="Elaph Gallery Design 4">
+                        <img src="ela5.webp" alt="Elaph Gallery Design 5">
+                        <img src="ela6.webp" alt="Elaph Gallery Design 6">
+                        <img src="ela7.webp" alt="Elaph Gallery Design 7">
+                        <img src="ela8.webp" alt="Elaph Gallery Design 8">
+                        <img src="ela9.webp" alt="Elaph Gallery Design 9">
+                        <img src="ela10.webp" alt="Elaph Gallery Design 10">
+                        <img src="ela11.webp" alt="Elaph Gallery Design 11">
+                        <img src="ela12.webp" alt="Elaph Gallery Design 12">
+                        <img src="ela13.webp" alt="Elaph Gallery Design 13">
+                        <img src="ela14.webp" alt="Elaph Gallery Design 14">
+                        <img src="ela15.webp" alt="Elaph Gallery Design 15">
+                        <img src="ela16.webp" alt="Elaph Gallery Design 16">
+                        <img src="ela17.webp" alt="Elaph Gallery Design 17">
+                        <img src="ela18.webp" alt="Elaph Gallery Design 18">
+                        <img src="ela19.webp" alt="Elaph Gallery Design 19">
+                        <img src="ela20.webp" alt="Elaph Gallery Design 20">
+                        <img src="ela21.webp" alt="Elaph Gallery Design 21">
+                        <img src="ela22.webp" alt="Elaph Gallery Design 22">
+                        <img src="ela23.webp" alt="Elaph Gallery Design 23">
+                        <img src="ela24.webp" alt="Elaph Gallery Design 24">
+                    </div>
+                    
                     <div class="photoshop-info">
                         <img src="photoshop.png" alt="Adobe Photoshop">
                         <span>Used Adobe Photoshop</span>
@@ -1456,12 +303,23 @@
                 </div>
             </div>
 
-            <!-- مشروع Soma Donuts -->
-            <div class="project-card" data-delay="0.7" onclick="openProjectModal('soma')">
+            <!-- مشروع Soma Donuts الجديد -->
+            <div class="project-card" data-delay="1.4" onclick="openProjectModal('soma')">
                 <img src="somacover.webp" alt="Soma Donuts" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Soma Donuts</h3>
                     <p class="project-description">A comprehensive visual identity for a brand specialized in making delicious donuts and famous beverages like coffee, espresso, cappuccino, and latte.</p>
+                    
+                    <div class="project-gallery">
+                        <img src="soma1.webp" alt="Soma Donuts Design 1">
+                        <img src="soma2.webp" alt="Soma Donuts Design 2">
+                        <img src="soma3.webp" alt="Soma Donuts Design 3">
+                        <img src="soma4.webp" alt="Soma Donuts Design 4">
+                        <img src="soma5.webp" alt="Soma Donuts Design 5">
+                        <img src="soma6.webp" alt="Soma Donuts Design 6">
+                        <img src="soma7.webp" alt="Soma Donuts Design 7">
+                    </div>
+                    
                     <div class="photoshop-info">
                         <img src="photoshop.png" alt="Adobe Photoshop">
                         <span>Used Adobe Photoshop</span>
@@ -1471,12 +329,35 @@
                 </div>
             </div>
 
-            <!-- مشروع Taashera Agency -->
-            <div class="project-card" data-delay="0.8" onclick="openProjectModal('taashera')">
+            <!-- مشروع Taashera Agency الجديد -->
+            <div class="project-card" data-delay="1.6" onclick="openProjectModal('taashera')">
                 <img src="tacover.webp" alt="Taashera Agency" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Taashera Agency</h3>
                     <p class="project-description">A visual identity project for a travel agency brand that facilitates travel procedures to any country and helps you obtain official travel documents and visas, whether for work or tourism.</p>
+                    
+                    <div class="project-gallery">
+                        <img src="ta1.webp" alt="Taashera Agency Design 1">
+                        <img src="ta2.webp" alt="Taashera Agency Design 2">
+                        <img src="ta3.webp" alt="Taashera Agency Design 3">
+                        <img src="ta4.webp" alt="Taashera Agency Design 4">
+                        <img src="ta5.webp" alt="Taashera Agency Design 5">
+                        <img src="ta6.webp" alt="Taashera Agency Design 6">
+                        <img src="ta7.webp" alt="Taashera Agency Design 7">
+                        <img src="ta8.webp" alt="Taashera Agency Design 8">
+                        <img src="ta9.webp" alt="Taashera Agency Design 9">
+                        <img src="ta10.webp" alt="Taashera Agency Design 10">
+                        <img src="ta11.webp" alt="Taashera Agency Design 11">
+                        <img src="ta12.webp" alt="Taashera Agency Design 12">
+                        <img src="ta13.png" alt="Taashera Agency Design 13">
+                        <img src="ta14.png" alt="Taashera Agency Design 14">
+                        <img src="ta15.png" alt="Taashera Agency Design 15">
+                        <img src="ta16.png" alt="Taashera Agency Design 16">
+                        <img src="ta17.png" alt="Taashera Agency Design 17">
+                        <img src="ta18.png" alt="Taashera Agency Design 18">
+                        <img src="ta19.png" alt="Taashera Agency Design 19">
+                    </div>
+                    
                     <div class="photoshop-info">
                         <img src="photoshop.png" alt="Adobe Photoshop">
                         <span>Used Adobe Photoshop</span>
@@ -1486,12 +367,32 @@
                 </div>
             </div>
 
-            <!-- مشروع YAKUT -->
-            <div class="project-card" data-delay="0.9" onclick="openProjectModal('yakut')">
+            <!-- مشروع YAKUT الجديد -->
+            <div class="project-card" data-delay="1.8" onclick="openProjectModal('yakut')">
                 <img src="yacover.jpg" alt="YAKUT" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">YAKUT</h3>
                     <p class="project-description">A visual identity project for a brand specialized in selling and manufacturing jewelry and precious accessories of various types, taking the ancient Egyptian style.</p>
+                    
+                    <div class="project-gallery">
+                        <img src="ya1.webp" alt="YAKUT Design 1">
+                        <img src="ya2.webp" alt="YAKUT Design 2">
+                        <img src="ya3.webp" alt="YAKUT Design 3">
+                        <img src="ya4.webp" alt="YAKUT Design 4">
+                        <img src="ya5.webp" alt="YAKUT Design 5">
+                        <img src="ya6.webp" alt="YAKUT Design 6">
+                        <img src="ya7.webp" alt="YAKUT Design 7">
+                        <img src="ya8.webp" alt="YAKUT Design 8">
+                        <img src="ya9.webp" alt="YAKUT Design 9">
+                        <img src="ya10.webp" alt="YAKUT Design 10">
+                        <img src="ya11.webp" alt="YAKUT Design 11">
+                        <img src="ya12.webp" alt="YAKUT Design 12">
+                        <img src="ya13.webp" alt="YAKUT Design 13">
+                        <img src="ya14.webp" alt="YAKUT Design 14">
+                        <img src="ya15.jpg" alt="YAKUT Design 15">
+                        <img src="ya16.jpg" alt="YAKUT Design 16">
+                    </div>
+                    
                     <div class="photoshop-info">
                         <img src="photoshop.png" alt="Adobe Photoshop">
                         <span>Used Adobe Photoshop</span>
@@ -1501,12 +402,23 @@
                 </div>
             </div>
 
-            <!-- مشروع Al Safa Diary -->
-            <div class="project-card" data-delay="1.0" onclick="openProjectModal('alsafa')">
+            <!-- مشروع Al Safa Diary الجديد -->
+            <div class="project-card" data-delay="2.0" onclick="openProjectModal('alsafa')">
                 <img src="alsafacover.webp" alt="Al Safa Diary" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Al Safa Diary</h3>
                     <p class="project-description">A brand identity for a place specialized in selling dairy products and its derivatives of cheese and locally manufactured sweets, made from 100% natural materials and ingredients.</p>
+                    
+                    <div class="project-gallery">
+                        <img src="alsafa1.webp" alt="Al Safa Diary Design 1">
+                        <img src="alsafa2.webp" alt="Al Safa Diary Design 2">
+                        <img src="alsafa3.webp" alt="Al Safa Diary Design 3">
+                        <img src="alsafa4.webp" alt="Al Safa Diary Design 4">
+                        <img src="alsafa5.webp" alt="Al Safa Diary Design 5">
+                        <img src="alsafa6.webp" alt="Al Safa Diary Design 6">
+                        <img src="alsafa7.webp" alt="Al Safa Diary Design 7">
+                    </div>
+                    
                     <div class="photoshop-info">
                         <img src="photoshop.png" alt="Adobe Photoshop">
                         <span>Used Adobe Photoshop</span>
@@ -1516,12 +428,20 @@
                 </div>
             </div>
 
-            <!-- مشروع Lynda Brochure -->
-            <div class="project-card" data-delay="1.1" onclick="openProjectModal('lynda')">
+            <!-- مشروع Lynda Brochure الجديد -->
+            <div class="project-card" data-delay="2.2" onclick="openProjectModal('lynda')">
                 <img src="lyndacover.webp" alt="Lynda Brochure" class="project-image">
                 <div class="project-content">
                     <h3 class="project-title">Lynda Brochure</h3>
                     <p class="project-description">For the well-known Lynda website for courses and work, which has now become LinkedIn. This project showcases my expertise in creating professional brochure designs.</p>
+                    
+                    <div class="project-gallery">
+                        <img src="lynda1.webp" alt="Lynda Brochure Design 1">
+                        <img src="lynda2.webp" alt="Lynda Brochure Design 2">
+                        <img src="lynda3.webp" alt="Lynda Brochure Design 3">
+                        <img src="lynda4.png" alt="Lynda Brochure Design 4">
+                    </div>
+                    
                     <div class="photoshop-info">
                         <img src="photoshop.png" alt="Adobe Photoshop">
                         <span>Used Adobe Photoshop</span>
@@ -1530,6 +450,7 @@
                     </div>
                 </div>
             </div>
+            
         </div>
     </section>
 
@@ -1593,7 +514,123 @@
         <p>© 2025 All Rights Reserved | Ibrahim Al Sharkawi</p>
     </footer>
 
-    <!-- معارض المشاريع -->
+    <!-- معرض مشروع Lynda Brochure -->
+    <div id="lynda-modal" class="project-modal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeProjectModal('lynda')">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="modal-shapes">
+                <div class="modal-shape modal-shape-1"></div>
+                <div class="modal-shape modal-shape-2"></div>
+                <div class="modal-shape modal-shape-3"></div>
+            </div>
+            <div class="modal-header">
+                <h2 class="modal-title">Lynda Brochure</h2>
+                <p class="modal-description">For the well-known Lynda website for courses and work, which has now become LinkedIn. This project showcases my expertise in creating professional brochure designs.</p>
+            </div>
+            <div class="modal-gallery">
+                <img src="lynda1.webp" alt="Lynda Brochure Design 1">
+                <img src="lynda2.webp" alt="Lynda Brochure Design 2">
+                <img src="lynda3.webp" alt="Lynda Brochure Design 3">
+                <img src="lynda4.png" alt="Lynda Brochure Design 4">
+            </div>
+            <div class="modal-footer">
+                <div class="photoshop-info">
+                    <img src="photoshop.png" alt="Adobe Photoshop">
+                    <span>Used Adobe Photoshop</span>
+                    <img src="illustrator.png" alt="Adobe Illustrator">
+                    <span>Used Adobe Illustrator</span>
+                </div>
+                <div class="thank-you">Thank You</div>
+                <p>© 2025 All Rights Reserved | Ibrahim Al Sharkawi</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- معرض مشروع Al Safa Diary -->
+    <div id="alsafa-modal" class="project-modal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeProjectModal('alsafa')">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="modal-shapes">
+                <div class="modal-shape modal-shape-1"></div>
+                <div class="modal-shape modal-shape-2"></div>
+                <div class="modal-shape modal-shape-3"></div>
+            </div>
+            <div class="modal-header">
+                <h2 class="modal-title">Al Safa Diary</h2>
+                <p class="modal-description">A brand identity for a place specialized in selling dairy products and its derivatives of cheese and locally manufactured sweets, made from 100% natural materials and ingredients.</p>
+            </div>
+            <div class="modal-gallery">
+                <img src="alsafa1.webp" alt="Al Safa Diary Design 1">
+                <img src="alsafa2.webp" alt="Al Safa Diary Design 2">
+                <img src="alsafa3.webp" alt="Al Safa Diary Design 3">
+                <img src="alsafa4.webp" alt="Al Safa Diary Design 4">
+                <img src="alsafa5.jpg" alt="Al Safa Diary Design 5">
+                <img src="alsafa6.png" alt="Al Safa Diary Design 6">
+                <img src="alsafa7.png" alt="Al Safa Diary Design 7">
+            </div>
+            <div class="modal-footer">
+                <div class="photoshop-info">
+                    <img src="photoshop.png" alt="Adobe Photoshop">
+                    <span>Used Adobe Photoshop</span>
+                    <img src="illustrator.png" alt="Adobe Illustrator">
+                    <span>Used Adobe Illustrator</span>
+                </div>
+                <div class="thank-you">Thank You</div>
+                <p>© 2025 All Rights Reserved | Ibrahim Al Sharkawi</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- معرض مشروع YAKUT -->
+    <div id="yakut-modal" class="project-modal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeProjectModal('yakut')">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="modal-shapes">
+                <div class="modal-shape modal-shape-1"></div>
+                <div class="modal-shape modal-shape-2"></div>
+                <div class="modal-shape modal-shape-3"></div>
+            </div>
+            <div class="modal-header">
+                <h2 class="modal-title">YAKUT</h2>
+                <p class="modal-description">A visual identity project for a brand specialized in selling and manufacturing jewelry and precious accessories of various types, taking the ancient Egyptian style.</p>
+            </div>
+            <div class="modal-gallery">
+                <img src="ya1.webp" alt="YAKUT Design 1">
+                <img src="ya2.webp" alt="YAKUT Design 2">
+                <img src="ya3.webp" alt="YAKUT Design 3">
+                <img src="ya4.webp" alt="YAKUT Design 4">
+                <img src="ya5.webp" alt="YAKUT Design 5">
+                <img src="ya6.webp" alt="YAKUT Design 6">
+                <img src="ya7.webp" alt="YAKUT Design 7">
+                <img src="ya8.webp" alt="YAKUT Design 8">
+                <img src="ya9.webp" alt="YAKUT Design 9">
+                <img src="ya10.webp" alt="YAKUT Design 10">
+                <img src="ya11.webp" alt="YAKUT Design 11">
+                <img src="ya12.webp" alt="YAKUT Design 12">
+                <img src="ya13.webp" alt="YAKUT Design 13">
+                <img src="ya14.webp" alt="YAKUT Design 14">
+                <img src="ya15.jpg" alt="YAKUT Design 15">
+                <img src="ya16.jpg" alt="YAKUT Design 16">
+            </div>
+            <div class="modal-footer">
+                <div class="photoshop-info">
+                    <img src="photoshop.png" alt="Adobe Photoshop">
+                    <span>Used Adobe Photoshop</span>
+                    <img src="illustrator.png" alt="Adobe Illustrator">
+                    <span>Used Adobe Illustrator</span>
+                </div>
+                <div class="thank-you">Thank You</div>
+                <p>© 2025 All Rights Reserved | Ibrahim Al Sharkawi</p>
+            </div>
+        </div>
+    </div>
+
     <!-- معرض مشروع Al Bawadi -->
     <div id="albawadi-modal" class="project-modal">
         <div class="modal-content">
@@ -1956,279 +993,6 @@
         </div>
     </div>
 
-    <!-- معرض مشروع YAKUT -->
-    <div id="yakut-modal" class="project-modal">
-        <div class="modal-content">
-            <div class="close-modal" onclick="closeProjectModal('yakut')">
-                <i class="fas fa-times"></i>
-            </div>
-            <div class="modal-shapes">
-                <div class="modal-shape modal-shape-1"></div>
-                <div class="modal-shape modal-shape-2"></div>
-                <div class="modal-shape modal-shape-3"></div>
-            </div>
-            <div class="modal-header">
-                <h2 class="modal-title">YAKUT</h2>
-                <p class="modal-description">A visual identity project for a brand specialized in selling and manufacturing jewelry and precious accessories of various types, taking the ancient Egyptian style.</p>
-            </div>
-            <div class="modal-gallery">
-                <img src="ya1.webp" alt="YAKUT Design 1">
-                <img src="ya2.webp" alt="YAKUT Design 2">
-                <img src="ya3.webp" alt="YAKUT Design 3">
-                <img src="ya4.webp" alt="YAKUT Design 4">
-                <img src="ya5.webp" alt="YAKUT Design 5">
-                <img src="ya6.webp" alt="YAKUT Design 6">
-                <img src="ya7.webp" alt="YAKUT Design 7">
-                <img src="ya8.webp" alt="YAKUT Design 8">
-                <img src="ya9.webp" alt="YAKUT Design 9">
-                <img src="ya10.webp" alt="YAKUT Design 10">
-                <img src="ya11.webp" alt="YAKUT Design 11">
-                <img src="ya12.webp" alt="YAKUT Design 12">
-                <img src="ya13.webp" alt="YAKUT Design 13">
-                <img src="ya14.webp" alt="YAKUT Design 14">
-                <img src="ya15.jpg" alt="YAKUT Design 15">
-                <img src="ya16.jpg" alt="YAKUT Design 16">
-            </div>
-            <div class="modal-footer">
-                <div class="photoshop-info">
-                    <img src="photoshop.png" alt="Adobe Photoshop">
-                    <span>Used Adobe Photoshop</span>
-                    <img src="illustrator.png" alt="Adobe Illustrator">
-                    <span>Used Adobe Illustrator</span>
-                </div>
-                <div class="thank-you">Thank You</div>
-                <p>© 2025 All Rights Reserved | Ibrahim Al Sharkawi</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- معرض مشروع Al Safa Diary -->
-    <div id="alsafa-modal" class="project-modal">
-        <div class="modal-content">
-            <div class="close-modal" onclick="closeProjectModal('alsafa')">
-                <i class="fas fa-times"></i>
-            </div>
-            <div class="modal-shapes">
-                <div class="modal-shape modal-shape-1"></div>
-                <div class="modal-shape modal-shape-2"></div>
-                <div class="modal-shape modal-shape-3"></div>
-            </div>
-            <div class="modal-header">
-                <h2 class="modal-title">Al Safa Diary</h2>
-                <p class="modal-description">A brand identity for a place specialized in selling dairy products and its derivatives of cheese and locally manufactured sweets, made from 100% natural materials and ingredients.</p>
-            </div>
-            <div class="modal-gallery">
-                <img src="alsafa1.webp" alt="Al Safa Diary Design 1">
-                <img src="alsafa2.webp" alt="Al Safa Diary Design 2">
-                <img src="alsafa3.webp" alt="Al Safa Diary Design 3">
-                <img src="alsafa4.webp" alt="Al Safa Diary Design 4">
-                <img src="alsafa5.jpg" alt="Al Safa Diary Design 5">
-                <img src="alsafa6.png" alt="Al Safa Diary Design 6">
-                <img src="alsafa7.png" alt="Al Safa Diary Design 7">
-            </div>
-            <div class="modal-footer">
-                <div class="photoshop-info">
-                    <img src="photoshop.png" alt="Adobe Photoshop">
-                    <span>Used Adobe Photoshop</span>
-                    <img src="illustrator.png" alt="Adobe Illustrator">
-                    <span>Used Adobe Illustrator</span>
-                </div>
-                <div class="thank-you">Thank You</div>
-                <p>© 2025 All Rights Reserved | Ibrahim Al Sharkawi</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- معرض مشروع Lynda Brochure -->
-    <div id="lynda-modal" class="project-modal">
-        <div class="modal-content">
-            <div class="close-modal" onclick="closeProjectModal('lynda')">
-                <i class="fas fa-times"></i>
-            </div>
-            <div class="modal-shapes">
-                <div class="modal-shape modal-shape-1"></div>
-                <div class="modal-shape modal-shape-2"></div>
-                <div class="modal-shape modal-shape-3"></div>
-            </div>
-            <div class="modal-header">
-                <h2 class="modal-title">Lynda Brochure</h2>
-                <p class="modal-description">For the well-known Lynda website for courses and work, which has now become LinkedIn. This project showcases my expertise in creating professional brochure designs.</p>
-            </div>
-            <div class="modal-gallery">
-                <img src="lynda1.webp" alt="Lynda Brochure Design 1">
-                <img src="lynda2.webp" alt="Lynda Brochure Design 2">
-                <img src="lynda3.webp" alt="Lynda Brochure Design 3">
-                <img src="lynda4.png" alt="Lynda Brochure Design 4">
-            </div>
-            <div class="modal-footer">
-                <div class="photoshop-info">
-                    <img src="photoshop.png" alt="Adobe Photoshop">
-                    <span>Used Adobe Photoshop</span>
-                    <img src="illustrator.png" alt="Adobe Illustrator">
-                    <span>Used Adobe Illustrator</span>
-                </div>
-                <div class="thank-you">Thank You</div>
-                <p>© 2025 All Rights Reserved | Ibrahim Al Sharkawi</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('section');
-            const projectCards = document.querySelectorAll('.project-card');
-            const skillItems = document.querySelectorAll('.skill-item');
-            const socialLinks = document.querySelectorAll('.social-link');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            // متغيرات لتتبع العناصر التي تم عرضها بالفعل
-            const shownElements = {
-                sections: new Set(),
-                projectCards: new Set(),
-                skillItems: new Set(),
-                socialLinks: new Set()
-            };
-            
-            function checkVisibility() {
-                sections.forEach(section => {
-                    const rect = section.getBoundingClientRect();
-                    const isVisible = (rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0);
-                    
-                    if (isVisible) {
-                        section.classList.add('visible');
-                        shownElements.sections.add(section);
-                    }
-                });
-
-                projectCards.forEach(card => {
-                    const rect = card.getBoundingClientRect();
-                    const isVisible = (rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0);
-                    const delay = card.getAttribute('data-delay') || 0;
-                    
-                    if (isVisible && !shownElements.projectCards.has(card)) {
-                        setTimeout(() => {
-                            card.classList.add('visible');
-                            shownElements.projectCards.add(card);
-                        }, delay * 500); // تقليل التأخير للنصف
-                    }
-                });
-
-                skillItems.forEach(item => {
-                    const rect = item.getBoundingClientRect();
-                    const isVisible = (rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0);
-                    
-                    if (isVisible && !shownElements.skillItems.has(item)) {
-                        item.classList.add('visible');
-                        shownElements.skillItems.add(item);
-                    }
-                });
-
-                socialLinks.forEach(link => {
-                    const rect = link.getBoundingClientRect();
-                    const isVisible = (rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0);
-                    
-                    if (isVisible && !shownElements.socialLinks.has(link)) {
-                        link.classList.add('visible');
-                        shownElements.socialLinks.add(link);
-                    }
-                });
-            }
-            
-            // Navigation active state
-            function updateActiveNav() {
-                let fromTop = window.scrollY + 100;
-                
-                navLinks.forEach(link => {
-                    let section = document.querySelector(link.hash);
-                    
-                    if (
-                        section.offsetTop <= fromTop &&
-                        section.offsetTop + section.offsetHeight > fromTop
-                    ) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
-            }
-            
-            checkVisibility();
-            updateActiveNav();
-            
-            // استخدام Intersection Observer للأداء الأفضل
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        checkVisibility();
-                        updateActiveNav();
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-            
-            window.addEventListener('scroll', function() {
-                checkVisibility();
-                updateActiveNav();
-            });
-            
-            skillItems.forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-15px) scale(1.08) rotateY(-15deg)';
-                });
-                
-                item.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1) rotateY(0)';
-                });
-            });
-            
-            projectCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-20px) rotateX(5deg) rotateY(-5deg)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
-                });
-            });
-            
-            // إضافة معالج حدث للبريد الإلكتروني
-            const emailLink = document.getElementById('email-link');
-            if (emailLink) {
-                emailLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    window.location.href = 'mailto:Himabrinck@gmail.com';
-                });
-            }
-        });
-
-        function openProjectModal(projectId) {
-            const modal = document.getElementById(`${projectId}-modal`);
-            if (modal) {
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeProjectModal(projectId) {
-            const modal = document.getElementById(`${projectId}-modal`);
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        window.onclick = function(event) {
-            const modals = document.querySelectorAll('.project-modal');
-            modals.forEach(modal => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
